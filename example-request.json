@@ -1,0 +1,503 @@
+{
+  "input": {
+    "workflow": {
+      "5": {
+        "inputs": {
+          "value": true,
+          "SUPIR_VAE": [
+            "21",
+            1
+          ],
+          "image": [
+            "23",
+            0
+          ]
+        },
+        "class_type": "SUPIR_first_stage",
+        "_meta": {
+          "title": "SUPIR_first_stage"
+        }
+      },
+      "7": {
+        "inputs": {
+          "value": 405338157,
+          "SUPIR_model": [
+            "21",
+            0
+          ],
+          "latents": [
+            "11",
+            0
+          ],
+          "positive": [
+            "9",
+            0
+          ],
+          "negative": [
+            "9",
+            1
+          ]
+        },
+        "class_type": "SUPIR_sample",
+        "_meta": {
+          "title": "SUPIR_sample"
+        }
+      },
+      "9": {
+        "inputs": {
+          "filename": "high quality, detailed, professional photo, solo, looking_at_viewer,   lips, portrait, close-up, realistic, masterpiece, best quality, very clear, (masterpiece, highest quality, best quality), portrait, exceptional detail, the highest detail, (super detailed eyes:1.2), detailed texture of the skin,",
+          "SUPIR_model": [
+            "21",
+            0
+          ],
+          "latents": [
+            "5",
+            2
+          ],
+          "captions": [
+            "69",
+            2
+          ]
+        },
+        "class_type": "SUPIR_conditioner",
+        "_meta": {
+          "title": "SUPIR_conditioner"
+        }
+      },
+      "10": {
+        "inputs": {
+          "value": true,
+          "SUPIR_VAE": [
+            "21",
+            1
+          ],
+          "latents": [
+            "7",
+            0
+          ]
+        },
+        "class_type": "SUPIR_decode",
+        "_meta": {
+          "title": "SUPIR_decode"
+        }
+      },
+      "11": {
+        "inputs": {
+          "value": true,
+          "SUPIR_VAE": [
+            "5",
+            0
+          ],
+          "image": [
+            "5",
+            1
+          ]
+        },
+        "class_type": "SUPIR_encode",
+        "_meta": {
+          "title": "SUPIR_encode"
+        }
+      },
+      "21": {
+        "inputs": {
+          "filename": "SUPIR-v0Q_fp16.safetensors",
+          "model": [
+            "22",
+            0
+          ],
+          "clip": [
+            "22",
+            1
+          ],
+          "vae": [
+            "22",
+            2
+          ]
+        },
+        "class_type": "SUPIR_model_loader_v2",
+        "_meta": {
+          "title": "SUPIR_model_loader_v2"
+        }
+      },
+      "22": {
+        "inputs": {
+          "ckpt_name": "jibMixRealisticXL_v10Lightning46Step.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "CheckpointLoaderSimple"
+        }
+      },
+      "23": {
+        "inputs": {
+          "upscale_method": "lanczos",
+          "width": 512,
+          "height": 2500,
+          "crop": "disabled",
+          "image": [
+            "120",
+            0
+          ]
+        },
+        "class_type": "ImageScale",
+        "_meta": {
+          "title": "ImageScale"
+        }
+      },
+      "24": {
+        "inputs": {
+          "filename_prefix": "фон",
+          "images": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "48": {
+        "inputs": {
+          "value": 512,
+          "images": [
+            "178",
+            0
+          ]
+        },
+        "class_type": "ConstrainImage|pysssss",
+        "_meta": {
+          "title": "ConstrainImage|pysssss"
+        }
+      },
+      "68": {
+        "inputs": {
+          "filename": "MiaoshouAI/Florence-2-large-PromptGen-v1.5"
+        },
+        "class_type": "DownloadAndLoadFlorence2Model",
+        "_meta": {
+          "title": "DownloadAndLoadFlorence2Model"
+        }
+      },
+      "69": {
+        "inputs": {
+          "text": "",
+          "image": [
+            "178",
+            0
+          ],
+          "florence2_model": [
+            "68",
+            0
+          ]
+        },
+        "class_type": "Florence2Run",
+        "_meta": {
+          "title": "Florence2Run"
+        }
+      },
+      "107": {
+        "inputs": {
+          "text": "wd-v1-4-convnextv2-tagger-v2",
+          "image": [
+            "178",
+            0
+          ]
+        },
+        "class_type": "WD14Tagger|pysssss",
+        "_meta": {
+          "title": "WD14Tagger|pysssss"
+        }
+      },
+      "120": {
+        "inputs": {
+          "filename": "SUPIR-v0F_fp16.safetensors",
+          "image": [
+            "48",
+            0
+          ],
+          "captions": [
+            "107",
+            0
+          ]
+        },
+        "class_type": "SUPIR_Upscale",
+        "_meta": {
+          "title": "SUPIR_Upscale"
+        }
+      },
+      "165": {
+        "inputs": {
+          "filename": "ae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "166": {
+        "inputs": {
+          "text": "diffusion_model",
+          "model": [
+            "184",
+            0
+          ]
+        },
+        "class_type": "ApplyFBCacheOnModel",
+        "_meta": {
+          "title": "ApplyFBCacheOnModel"
+        }
+      },
+      "167": {
+        "inputs": {
+          "value": 1.15,
+          "model": [
+            "166",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingFlux",
+        "_meta": {
+          "title": "ModelSamplingFlux"
+        }
+      },
+      "168": {
+        "inputs": {
+          "pixels": [
+            "181",
+            0
+          ],
+          "vae": [
+            "165",
+            0
+          ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+          "title": "VAEEncode"
+        }
+      },
+      "169": {
+        "inputs": {
+          "value": 1,
+          "conditioning": [
+            "179",
+            0
+          ]
+        },
+        "class_type": "FluxGuidance",
+        "_meta": {
+          "title": "FluxGuidance"
+        }
+      },
+      "170": {
+        "inputs": {
+          "conditioning": [
+            "173",
+            0
+          ]
+        },
+        "class_type": "ConditioningZeroOut",
+        "_meta": {
+          "title": "ConditioningZeroOut"
+        }
+      },
+      "171": {
+        "inputs": {
+          "conditioning": [
+            "169",
+            0
+          ],
+          "latent": [
+            "168",
+            0
+          ]
+        },
+        "class_type": "ReferenceLatent",
+        "_meta": {
+          "title": "ReferenceLatent"
+        }
+      },
+      "173": {
+        "inputs": {
+          "text": "monochrome, grayscale, fantasy, extra details, distortion, unrealistic skin, deformed eyes, cartoon, distorted face, unrealistic skin, blurry, over-saturated, extra limbs, extra eyes",
+          "clip": [
+            "180",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "174": {
+        "inputs": {
+          "seed": 379307488708357,
+          "steps": 13,
+          "cfg": 1,
+          "sampler_name": "euler",
+          "scheduler": "normal",
+          "denoise": 1,
+          "model": [
+            "167",
+            0
+          ],
+          "positive": [
+            "171",
+            0
+          ],
+          "negative": [
+            "170",
+            0
+          ],
+          "latent_image": [
+            "168",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "175": {
+        "inputs": {
+          "samples": [
+            "174",
+            0
+          ],
+          "vae": [
+            "165",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "176": {
+        "inputs": {
+          "upscale_method": "lanczos",
+          "width": 512,
+          "height": 1024,
+          "crop": "disabled",
+          "image": [
+            "175",
+            0
+          ]
+        },
+        "class_type": "ImageScale",
+        "_meta": {
+          "title": "ImageScale"
+        }
+      },
+      "177": {
+        "inputs": {
+          "text": "RGB",
+          "image": [
+            "176",
+            0
+          ]
+        },
+        "class_type": "Levels",
+        "_meta": {
+          "title": "Levels"
+        }
+      },
+      "178": {
+        "inputs": {
+          "value": 8,
+          "image": [
+            "177",
+            0
+          ]
+        },
+        "class_type": "ColorCorrect",
+        "_meta": {
+          "title": "ColorCorrect"
+        }
+      },
+      "179": {
+        "inputs": {
+          "text": "remove damage and restore texture, natural and vivid colors, realistic tones, enhance clothing and background details, keep exact proportions and alignment, do not alter pose or framing, face unchanged, identity preserved, remove noise and scratches, soft natural lighting, remove damage, natural colors, do not change the original,сolorize the photo\n",
+          "clip": [
+            "180",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Positive Prompt)"
+        }
+      },
+      "180": {
+        "inputs": {
+          "filename": "t5xxl_fp8_e4m3fn.safetensors"
+        },
+        "class_type": "DualCLIPLoader",
+        "_meta": {
+          "title": "DualCLIPLoader"
+        }
+      },
+      "181": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "186",
+            0
+          ]
+        },
+        "class_type": "ImageScaleToTotalPixels",
+        "_meta": {
+          "title": "ImageScaleToTotalPixels"
+        }
+      },
+      "184": {
+        "inputs": {
+          "filename": "flux1-dev-kontext_fp8_scaled.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "186": {
+        "inputs": {
+          "image": "photo_2025-11-07_01-51-45.jpg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "188": {
+        "inputs": {
+          "filename": "RMBG-2.0",
+          "image": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "RMBG",
+        "_meta": {
+          "title": "RMBG"
+        }
+      },
+      "194": {
+        "inputs": {
+          "filename_prefix": "б/фона",
+          "images": [
+            "188",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      }
+    }
+  }
+}
